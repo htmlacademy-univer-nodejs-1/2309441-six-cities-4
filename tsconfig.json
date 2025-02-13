@@ -16,10 +16,12 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
     "experimentalDecorators": true,
     "sourceMap": true,
     "outDir": "./dist",
     "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "types": [
       "node",
     ],
