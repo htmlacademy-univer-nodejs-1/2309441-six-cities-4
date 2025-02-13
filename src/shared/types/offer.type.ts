@@ -1,14 +1,12 @@
-type RentalCity = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
+import {City} from './city.enum';
+import {HouseType} from './house-type.enum';
+import {Facilities} from './facilities.type';
 
-type RentalHouseType = 'apartment' | 'house' | 'room' | 'hotel';
-
-type RentalFacilities = 'Breakfast' | 'Air conditioning' | 'Laptop friendly workspace' | 'Baby seat' | 'Washer' | 'Towels' | 'Fridge';
-
-export type RentalOffer = {
+export type Offer = {
   /**
    * Наименование. Обязательное. Мин. длин 10 символов, макс. длина 100
    */
-  name: string;
+  title: string;
 
   /**
    * Описание предложения. Обязательное. Мин. длина 20 символов, макс. длина 1024 символа
@@ -18,22 +16,22 @@ export type RentalOffer = {
   /**
    * Дата публикации предложения. Обязательное
    */
-  publishedAt: string;
+  postDate: Date;
 
   /**
    * Город. Обязательное. Один из шести городов
    */
-  city: RentalCity;
+  city: City;
 
   /**
    * Превью изображения. Обязательное. Ссылка на изображение, которое используется в качестве превью
    */
-  previewUrl: string;
+  previewPath: string;
 
   /**
    * Фотографии жилья. Обязательное. Список ссылок на фотографии жилья. Всегда 6 фотографий
    */
-  imageUrls: string[];
+  imagePaths: string[];
 
   /**
    * Флаг «Премиум». Обязательное. Признак премиальности предложения
@@ -53,7 +51,7 @@ export type RentalOffer = {
   /**
    * Тип жилья. Обязательное
    */
-  houseType: RentalHouseType;
+  houseType: HouseType;
 
   /**
    * Количество комнат. Обязательное. Мин. 1, Макс. 8
@@ -73,12 +71,12 @@ export type RentalOffer = {
   /**
    * Удобства. Обязательное. Список удобств
    */
-  facilities: RentalFacilities;
+  facilities: Facilities;
 
   /**
    * Автор предложения. Обязательное. Ссылка на сущность «Пользователь»
    */
-  author: string;
+  user: string;
 
   /**
    * Количество комментариев. Рассчитывается автоматически
