@@ -8,7 +8,7 @@ export class CLIApplication {
 
   constructor(private readonly defaultCommand: string = '--help') {}
 
-  public registerCommand(commandList: Command[]){
+  public registerCommand(commandList: Command[]) {
     commandList.forEach((command) => {
       if(Object.hasOwn(this.commands, command.getName())){
         throw new Error(`Command ${command.getName()} is already registered`);
@@ -23,14 +23,14 @@ export class CLIApplication {
   }
 
   public getDefaultCommand(): Command | never {
-    if(!this.commands[this.defaultCommand]){
+    if (!this.commands[this.defaultCommand]){
       throw new Error(`The default command ${this.defaultCommand} is not registered`);
     }
 
     return this.commands[this.defaultCommand];
   }
 
-  public processCommand(argv: string[]): void{
+  public processCommand(argv: string[]): void {
     const parsedCommand = CommandParser.parse(argv);
     const [commandName] = Object.keys(parsedCommand);
     const command = this.getCommand(commandName);

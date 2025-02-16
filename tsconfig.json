@@ -17,6 +17,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
+    "strictPropertyInitialization": false,
     "experimentalDecorators": true,
     "sourceMap": true,
     "outDir": "./dist",

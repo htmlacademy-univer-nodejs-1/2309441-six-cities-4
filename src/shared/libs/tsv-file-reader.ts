@@ -1,12 +1,10 @@
 import {readFileSync} from 'node:fs';
 
-import {FileReader} from './file-reader.interface';
-import {Offer} from '../types/offer.type';
-import {City} from '../types/city.enum';
-import {HouseType} from '../types/house-type.enum';
-import {Facilities} from '../types/facilities.type';
+import {Offer, City, HouseType, Facilities} from '../types';
 
-export class TsvFileReader implements FileReader{
+import {FileReader} from './file-reader.interface';
+
+export class TsvFileReader implements FileReader {
   private rawData = '';
 
   constructor(private readonly filename: string) {
@@ -49,7 +47,7 @@ export class TsvFileReader implements FileReader{
         postDate: new Date(postDate),
         city: City[city as 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf'],
         previewPath,
-        imagePaths: imagePaths.split(';'),
+        imagePaths: imagePaths.split('; '),
         isPremium: isPremium === 'true',
         isFavorites: isFavorites === 'true',
         rating: Number(rating),
@@ -60,7 +58,7 @@ export class TsvFileReader implements FileReader{
         facilities: facilities as Facilities,
         user,
         commentsCount: Number(commentsCount),
-        coordinates: coordinates.split(';').map(Number) as [number, number]
+        coordinates: coordinates.split('; ').map(Number) as [number, number]
       }));
   }
 }
