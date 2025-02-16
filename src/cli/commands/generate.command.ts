@@ -1,11 +1,10 @@
 import got from 'got';
-import {appendFile} from 'node:fs/promises';
 
 import {MockServerData} from '../../shared/types';
+import {TsvFileWriter} from '../../shared/libs/file-writer';
 import {TsvOfferGenerator} from '../../shared/libs/offer-generator';
 
 import {Command} from './command.interface';
-
 
 export class GenerateCommand implements Command {
   private initialData: MockServerData;
@@ -19,14 +18,11 @@ export class GenerateCommand implements Command {
   }
 
   private async write (filepath: string, offerCount: number) {
-    const tsxOfferGenerator = new TsvOfferGenerator(this.initialData);
+    const tsvOfferGenerator = new TsvOfferGenerator(this.initialData);
+    const tsvFileWriter = new TsvFileWriter(filepath);
 
     for(let i = 0; i < offerCount; i++) {
-      await appendFile(
-        filepath,
-        `${tsxOfferGenerator.generate()}\n`,
-        { encoding: 'utf-8' }
-      );
+      await tsvFileWriter.write(tsvOfferGenerator.generate());
     }
   }
 
