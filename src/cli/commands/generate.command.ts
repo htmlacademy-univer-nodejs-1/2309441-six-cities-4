@@ -21,7 +21,7 @@ export class GenerateCommand implements Command {
     const tsvOfferGenerator = new TsvOfferGenerator(this.initialData);
     const tsvFileWriter = new TsvFileWriter(filepath);
 
-    for(let i = 0; i < offerCount; i++) {
+    for (let i = 0; i < offerCount; i++) {
       await tsvFileWriter.write(tsvOfferGenerator.generate());
     }
   }

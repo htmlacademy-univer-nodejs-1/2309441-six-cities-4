@@ -10,7 +10,7 @@ export class CLIApplication {
 
   public registerCommand(commandList: Command[]) {
     commandList.forEach((command) => {
-      if(Object.hasOwn(this.commands, command.getName())){
+      if (Object.hasOwn(this.commands, command.getName())) {
         throw new Error(`Command ${command.getName()} is already registered`);
       }
 
@@ -23,7 +23,7 @@ export class CLIApplication {
   }
 
   public getDefaultCommand(): Command | never {
-    if (!this.commands[this.defaultCommand]){
+    if (!this.commands[this.defaultCommand]) {
       throw new Error(`The default command ${this.defaultCommand} is not registered`);
     }
 

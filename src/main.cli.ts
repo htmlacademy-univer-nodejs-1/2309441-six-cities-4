@@ -2,7 +2,7 @@
 
 import {HelpCommand, VersionCommand, ImportCommand, CLIApplication, GenerateCommand} from './cli';
 
-function bootstrap(){
+function bootstrap() {
   const cliApplication = new CLIApplication();
   cliApplication.registerCommand([
     new HelpCommand(),

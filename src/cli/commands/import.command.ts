@@ -27,7 +27,7 @@ export class ImportCommand implements Command {
     try {
       await fileReader.read();
     } catch (error) {
-      if (!(error instanceof Error)){
+      if (!(error instanceof Error)) {
         throw error;
       }
 
