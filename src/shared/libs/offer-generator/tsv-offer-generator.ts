@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import {City, Facilities, HouseType, MockServerData} from '../../types';
+import {City, Facilities, HouseType, MockServerData, UserType} from '../../types';
 import {generateRandomValue, getRandomItem, getRandomItems} from '../../helpers';
 
 import {OfferGenerator} from './offer-generator.interface';
@@ -19,8 +19,8 @@ export class TsvOfferGenerator implements OfferGenerator {
     const description = getRandomItem(this.mockData.description);
     const postDate = dayjs().subtract(generateRandomValue(FIRST_WEE_DAY, LAST_WEE_DAY), 'day').toISOString();
     const city = getRandomItem(Object.values(City));
-    const previewPath = getRandomItem(this.mockData.images);
-    const imagePaths = getRandomItems(this.mockData.images).join('; ');
+    const previewPath = getRandomItem(this.mockData.houseImages);
+    const imagePaths = getRandomItems(this.mockData.houseImages).join('; ');
     const isPremium = generateRandomValue(0, 1) ? 'true' : 'false';
     const isFavorites = generateRandomValue(0, 1) ? 'true' : 'false';
     const rating = generateRandomValue(1, 5);
@@ -29,18 +29,22 @@ export class TsvOfferGenerator implements OfferGenerator {
     const guestCount = generateRandomValue(1, 8);
     const rentalCost = generateRandomValue(MIN_PRICE, MAX_PRICE);
     const facilities = getRandomItem(Object.values(Facilities));
-    const user = getRandomItem(this.mockData.user);
     const commentsCount = 0;
     const coordinates = [
       generateRandomValue(0, 10, 3),
       generateRandomValue(0, 10, 3)
     ].join('; ');
+    const username = getRandomItem(this.mockData.username);
+    const email = getRandomItem(this.mockData.email);
+    const avatarPath = getRandomItem(this.mockData.avatarImage);
+    const userType = getRandomItem(Object.keys(UserType));
 
     return [
       title, description, postDate, city,
       previewPath, imagePaths, isPremium, isFavorites,
       rating, houseType, roomsCount, guestCount,
-      rentalCost, facilities, user, commentsCount, coordinates
+      rentalCost, facilities, commentsCount, coordinates,
+      username, email, avatarPath, userType
     ].join('\t');
   }
 }

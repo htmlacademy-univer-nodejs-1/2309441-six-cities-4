@@ -1,4 +1,4 @@
-import {City, Facilities, HouseType, Offer} from '../types';
+import {City, Facilities, HouseType, Offer, User, UserType} from '../types';
 
 export function createOffer(offerData: string): Offer {
   const [
@@ -16,10 +16,21 @@ export function createOffer(offerData: string): Offer {
     guestCount,
     rentalCost,
     facilities,
-    user,
     commentsCount,
-    coordinates
+    coordinates,
+    username,
+    email,
+    avatarPath,
+    userType
   ] = offerData.replace('\n', '').split('\t');
+
+  const user: User = {
+    name: username,
+    email,
+    avatarPath,
+    type: UserType[userType as 'Pro' | 'Base'],
+    password: ''
+  };
 
   return {
     title,

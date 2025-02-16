@@ -1,6 +1,7 @@
 import {City} from './city.enum';
 import {HouseType} from './house-type.enum';
 import {Facilities} from './facilities.type';
+import {User} from './user.type';
 
 export type Offer = {
   /**
@@ -76,7 +77,7 @@ export type Offer = {
   /**
    * Автор предложения. Обязательное. Ссылка на сущность «Пользователь»
    */
-  user: string;
+  user: User;
 
   /**
    * Количество комментариев. Рассчитывается автоматически
