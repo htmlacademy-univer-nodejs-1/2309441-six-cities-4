@@ -1,5 +1,5 @@
-import {TsvFileReader} from '../../shared/libs/file-reader';
-import {createOffer, getErrorMessage} from '../../shared/helpers';
+import {TsvFileReader} from '../../shared/libs/file-reader/index.js';
+import {createOffer, getErrorMessage} from '../../shared/helpers/index.js';
 
 import {Command} from './command.interface.js';
 
