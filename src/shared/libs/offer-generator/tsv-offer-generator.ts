@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 
-import {City, Facilities, HouseType, MockServerData, UserType} from '../../types';
-import {generateRandomValue, getRandomItem, getRandomItems} from '../../helpers';
+import {City, Facilities, HouseType, MockServerData, UserType} from '../../types/index.js';
+import {generateRandomValue, getRandomItem, getRandomItems} from '../../helpers/index.js';
 
-import {OfferGenerator} from './offer-generator.interface';
+import {OfferGenerator} from './offer-generator.interface.js';
 
 const MIN_PRICE = 100;
 const MAX_PRICE = 100_000;

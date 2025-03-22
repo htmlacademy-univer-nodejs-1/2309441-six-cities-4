@@ -1,10 +1,10 @@
 import got from 'got';
 
-import {MockServerData} from '../../shared/types';
-import {TsvFileWriter} from '../../shared/libs/file-writer';
-import {TsvOfferGenerator} from '../../shared/libs/offer-generator';
+import {MockServerData} from '../../shared/types/index.js';
+import {TsvFileWriter} from '../../shared/libs/file-writer/index.js';
+import {TsvOfferGenerator} from '../../shared/libs/offer-generator/index.js';
 
-import {Command} from './command.interface';
+import {Command} from './command.interface.js';
 
 export class GenerateCommand implements Command {
   private initialData: MockServerData;
